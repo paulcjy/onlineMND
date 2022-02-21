@@ -1,0 +1,213 @@
++------------------+
+| Tables_in_mrd_db |
++------------------+
+| certificates     |
+| childCategory    |
+| classFile        |
+| contents         |
+| hashtag          |
+| learningRecord   |
+| lecture          |
+| myLectures       |
+| parentCategory   |
+| section          |
+| sessions         |
+| userinfo         |
++------------------+
+
+mysql> desc certificates;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | bigint      | NO   | PRI | NULL    | auto_increment |
+| userId    | varchar(45) | NO   |     | NULL    |                |
+| serial    | varchar(45) | NO   |     | NULL    |                |
+| lectureId | bigint      | NO   |     | NULL    |                |
+| time      | datetime    | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+
+mysql> desc childCategory;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id           | bigint      | NO   | PRI | NULL    | auto_increment |
+| categoryName | varchar(50) | NO   |     | NULL    |                |
+| parentId     | bigint      | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+
+mysql> desc classFile;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | bigint       | NO   | PRI | NULL    | auto_increment |
+| lectureId | bigint       | NO   |     | NULL    |                |
+| sectionId | bigint       | NO   |     | NULL    |                |
+| contentId | bigint       | NO   |     | NULL    |                |
+| filePath  | varchar(200) | NO   |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+
+mysql> desc contents;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | bigint       | NO   | PRI | NULL    | auto_increment |
+| lectureId    | bigint       | NO   |     | NULL    |                |
+| contentTitle | varchar(100) | NO   |     | NULL    |                |
+| sectionId    | bigint       | NO   |     | NULL    |                |
+| contentVideo | varchar(100) | NO   |     | NULL    |                |
+| contentText  | text         | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+
+mysql> desc hashtag;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | bigint      | NO   | PRI | NULL    | auto_increment |
+| hashtagName | varchar(20) | NO   |     | NULL    |                |
+| lectureId   | bigint      | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+
+mysql> desc learningRecord;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| userId      | varchar(45) | NO   | PRI | NULL    |       |
+| lectureId   | bigint      | NO   | PRI | NULL    |       |
+| contentId   | bigint      | NO   | PRI | NULL    |       |
+| isFinished  | tinyint     | NO   |     | NULL    |       |
+| entireTime  | int         | NO   |     | NULL    |       |
+| watchedTime | int         | NO   |     | NULL    |       |
+| time        | datetime    | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+mysql> desc lecture;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| id               | bigint       | NO   | PRI | NULL    | auto_increment |
+| lectureName      | varchar(100) | NO   |     | NULL    |                |
+| lectureIntro     | text         | YES  |     | NULL    |                |
+| lecturerId       | varchar(45)  | NO   |     | NULL    |                |
+| parentCategoryId | bigint       | NO   |     | NULL    |                |
+| childCategoryId  | bigint       | NO   |     | NULL    |                |
+| thumbnail        | varchar(200) | NO   |     | NULL    |                |
+| time             | datetime     | NO   |     | NULL    |                |
+| difficulty       | int          | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+
+mysql> desc myLectures;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | bigint      | NO   | PRI | NULL    | auto_increment |
+| userId    | varchar(45) | NO   |     | NULL    |                |
+| lectureId | bigint      | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+
+mysql> desc parentCategory;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id           | bigint      | NO   | PRI | NULL    | auto_increment |
+| categoryName | varchar(50) | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+
+mysql> desc section;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | bigint       | NO   | PRI | NULL    | auto_increment |
+| lectureId   | bigint       | NO   |     | NULL    |                |
+| sectionName | varchar(100) | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+
+mysql> desc sessions;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| session_id | varchar(128) | NO   | PRI | NULL    |       |
+| expires    | int unsigned | NO   |     | NULL    |       |
+| data       | mediumtext   | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+
+mysql> desc userinfo;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| userNo     | int          | NO   | PRI | NULL    | auto_increment |
+| userID     | varchar(30)  | NO   | UNI | NULL    |                |
+| userPW     | varchar(200) | NO   |     | NULL    |                |
+| userName   | varchar(20)  | NO   |     | NULL    |                |
+| userSex    | char(1)      | NO   |     | NULL    |                |
+| userPhone  | varchar(20)  | NO   |     | NULL    |                |
+| userBirth  | date         | NO   |     | NULL    |                |
+| userJoin   | datetime     | NO   |     | NULL    |                |
+| userDesc   | varchar(200) | YES  |     | NULL    |                |
+| userStatus | int          | NO   |     | 4       |                |
+| userSalt   | varchar(200) | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+
+mysql> select * from parentCategory;
++----+---------------------------+
+| id | categoryName              |
++----+---------------------------+
+|  1 | 개발 · 프로그래밍         |
+|  2 | 보안 · 네트워크           |
+|  3 | 데이터 사이언스           |
+|  4 | 크리에이티브              |
+|  5 | 직무 · 마케팅             |
+|  6 | 학문 · 외국어             |
+|  7 | 커리어                    |
+|  8 | 교양                      |
++----+---------------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from childCategory;
++----+------------------------------+----------+
+| id | categoryName                 | parentId |
++----+------------------------------+----------+
+|  1 | 웹 개발                      |        1 |
+|  2 | 프론트엔드                   |        1 |
+|  3 | 백엔드                       |        1 |
+|  4 | 풀스택                       |        1 |
+|  5 | 모바일 앱 개발               |        1 |
+|  6 | 프로그래밍 언어              |        1 |
+|  7 | 알고리즘 · 자료구조          |        1 |
+|  8 | 데이터 사이언스              |        1 |
+|  9 | 데이터베이스                 |        1 |
+| 10 | 데브옵스 · 인프라            |        1 |
+| 11 | 게임 개발                    |        1 |
+| 12 | 보안                         |        2 |
+| 13 | 시스템                       |        2 |
+| 14 | 클라우드                     |        2 |
+| 15 | 블록체인                     |        2 |
+| 16 | 기타                         |        2 |
+| 17 | 데이터 분석                  |        3 |
+| 18 | 인공지능                     |        3 |
+| 19 | 데이터 시각화                |        3 |
+| 20 | 데이터 수집 · 처리           |        3 |
+| 21 | 기타                         |        3 |
+| 22 | CAD · 3D 모델링              |        4 |
+| 23 | 웹 퍼블리싱                  |        4 |
+| 24 | UX/UI                        |        4 |
+| 25 | 그래픽 디자인                |        4 |
+| 26 | 디자인 툴                    |        4 |
+| 27 | 사진 · 영상                  |        4 |
+| 28 | VR/AR                        |        4 |
+| 29 | 사운드                       |        4 |
+| 30 | 기타                         |        4 |
+| 31 | 오피스                       |        5 |
+| 32 | 마케팅                       |        5 |
+| 33 | 기획 · 전략 · PM             |        5 |
+| 34 | 업무 자동화                  |        5 |
+| 35 | 금융 · 경영                  |        5 |
+| 36 | 기타                         |        5 |
+| 37 | 수학                         |        6 |
+| 38 | 외국어                       |        6 |
+| 39 | 기타                         |        6 |
+| 40 | 취업 · 이직                  |        7 |
+| 41 | 개인 브랜딩                  |        7 |
+| 42 | 창업                         |        7 |
+| 43 | 기타                         |        7 |
+| 44 | 교양                         |        8 |
++----+------------------------------+----------+

@@ -1,0 +1,145 @@
+# /api/lecture/
+
+1. showPageLecture (post)
+table: lecture
+[ 페이지 번호, 페이지 당 강의 수, 정렬 기준, 카테고리 아이디 ]
+정렬 기준은 시간, 난이도 오름차순, 난이도 내림차순
+> 페이지 당 강의 수만큼 번호에 해당하는 페이지 반환
+
+2. lectures (get) 완료
+table: lecture
+모든 강의를 반환
+
+3. lectureInfo (post)
+table: hashtag
+[ 강의 아이디 ]
+hashtag table에서 강의 아이디가 입력값인 것을 찾아 객체에 저장
+lecture table에서 아이디가 입력값인 것을 찾아 강의 정보를 객체에 저장
+> 강의 정보와 해시태그를 반환
+
+4. findLectures/category/parent (post)
+table: lecture
+[ 부모 카테고리 아이디 ]
+> lecture table에서 부모 카테고리 아이디가 입력값인 것을 찾아 반환
+
+5. findLectures/category/lecturename (post)
+table: lecture
+[ 강의 이름 ]
+> 강의 이름을 입력하면 이름이 비슷한 강의를 반환
+
+6. findLectures/category/child (post)
+table: lecture
+[ 자식 카테고리 아이디 ]
+> 자식 카테고리 아이디가 입력값인 것을 반환
+
+7. currentLectures (get)
+table: lecture
+> 최근 한 달 간의 강의를 반환
+
+8. makeLecture (post)
+table: lecture
+[ 강의 아이디, 이름, 인트로, 해시태그, 부모카테고리, 자식카테고리, 난이도, 썸네일 ]
+> 새 강의를 생성하고 성공하면 200 코드 반환
+
+9. deleteLecture (post)
+table: lecture, hashtag, section, contents, classFile, myLectures
+> 강의를 삭제하고 성공하면 200 코드 반환
+
+10. updateLecture (post)
+table: lecture, hashtag
+[ 강의 아이디, 이름, 인트로, 렉처아이디, 해시태그, 부모, 자식, 난이도, 썸네일 ]
+> 강의 정보 업데이트
+
+11. makeSection (post)
+table: section
+[ 렉쳐아이디, 섹션이름 ]
+> section table에 추가
+
+12. viewSections (post)
+table: section
+[ 렉처아이디 ]
+> 렉처아이디로 섹션테이블에서 검색
+
+13. deleteSection (post)
+table: section
+
+14. updateSection (post)
+table: section
+
+15. makeContent (post)
+table: contents
+
+16. updateContent (post)
+table: contents
+
+17. viewContentList (post)
+table: contents
+
+18. viewContent (post)
+table: contents
+
+19. deleteContent (post)
+table: contents
+
+20. category/parent (get)
+table: parentCategory
+부모 카테고리를 조회
+
+21. category/parentWithId (post)
+table: parentCategory
+아이디로 부모 카테고리를 조회
+
+22. category/child (post)
+table: childCategory
+부모 카테고리 아이디로 자식 카테고리를 조회
+
+23. category/childWithId (post)
+table: childCategory
+자식 카테고리 아이디로 부모 카테고리를 조회
+
+24. addMyLecture (post)
+table: myLectures
+[ 유저아이디, 렉처아이디 ]
+유저의 내강의에 강의를 추가
+
+25. viewMyLecture (post)
+table: myLectures
+[ 유저아이디 ]
+유저아이디로 내강의를 조회
+
+26. deleteMyLecture (post)
+table: myLectures
+내강의를 삭제
+
+27. viewMySkills (post)
+table: myLectures
+[ 유저아이디 ]
+마이스킬을 조회
+
+28. addCertificate (post)
+table: certificates
+[ 유저아이디, 시리얼, 렉처아이디 ]
+수료증을 추가한다
+
+29. viewCertificate (post)
+table: certificates
+[ 유저아이디 ]
+수료증을 조회한다
+
+30. addRecord
+
+31. viewFinishedLecture
+완료한 강의 수를 조회
+
+32. viewFinishedContent
+학습 완료한 수업 수를 조회
+
+33. viewLearningRecord
+특정 강의의 학습 현황을 조회
+이 강의 내가 어디까지 들었는지
+
+34. viewOneCurrentLearningRecord
+가장 최근 학습한 강의 한 개를 조회
+
+35. viewCurrentLearningRecords
+가장 최근 학습한 강의 n개의 이름을 조회

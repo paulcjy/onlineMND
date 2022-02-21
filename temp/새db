@@ -1,0 +1,57 @@
+name: course
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| course_id        | bigint       | NO   | PRI | NULL    | auto_increment |
+| course_name      | varchar(100) | NO   |     | NULL    |                |
+| course_sum       | text         | NO   |     | NULL    |                |
+| course_cat1      | int          | NO   |     | NULL    |                |
+| course_cat2      | int          | NO   |     | NULL    |                |
+| course_thumb     | varchar(200) | NO   |     | NULL    |                |
+| course_diff      | int          | NO   |     | NULL    |                |
+| course_create    | datetime     | NO   |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+
+CREATE TABLE course
+(
+	course_id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	course_name VARCHAR(100) NOT NULL,
+	course_sum TEXT NOT NULL,
+	course_cat1 INT NOT NULL,
+	course_cat2 INT NOT NULL,
+	course_thumb VARCHAR(200) NOT NULL,
+	course_diff INT NOT NULL,
+	course_create DATETIME NOT NULL
+);
+
+name: user
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| user_id          | bigint       | NO   | PRI | NULL    | auto_increment |
+| user_email       | varchar(50)  | NO   | UNI | NULL    |                |
+| user_password    | varchar(200) | NO   |     | NULL    |                |
+| user_name        | varchar(20)  | NO   |     | NULL    |                |
+| user_sex         | int          | NO   |     | NULL    |                |
+| user_phone       | varchar(20)  | NO   |     | NULL    |                |
+| user_birth       | date         | NO   |     | NULL    |                |
+| user_joined      | datetime     | NO   |     | NULL    |                |
+| user_description | varchar(200) | YES  |     | NULL    |                |
+| user_privilege   | int          | NO   |     | 4       |                |
+| user_salt        | varchar(200) | NO   |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+
+CREATE TABLE user
+(
+	user_id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	user_email VARCHAR(50) NOT NULL UNIQUE,
+	user_password VARCHAR(200) NOT NULL,
+	user_name VARCHAR(20) NOT NULL,
+	user_sex INT NOT NULL,
+	user_phone VARCHAR(20) NOT NULL,
+	user_birth DATE NOT NULL,
+	user_joined DATETIME NOT NULL,
+	user_description VARCHAR(200),
+	user_privilege INT NOT NULL DEFAULT 4,
+	user_salt VARCHAR(200) NOT NULL
+);
